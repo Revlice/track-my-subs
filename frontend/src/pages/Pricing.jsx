@@ -1,6 +1,5 @@
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
-import Price from '../components/Price.jsx';
 import PriceCards from "../components/PriceCards.jsx";
 
 

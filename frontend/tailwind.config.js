@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage:{
+        "custom-background":"url('/assets/sosyalmedya.png)"
+      },
       colors: {
         'header-color':'#20191A'
       },
