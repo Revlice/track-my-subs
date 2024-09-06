@@ -2,17 +2,16 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import PriceCards from "../components/PriceCards.jsx";
 
-
-const Pricing = ()=>{
-
-    return(
+const Pricing = () => {
+    return (
         <>
-            <Header/>
-            <div className="w-full h-screen text-white bg-gradient-to-b from-stone-900 to-fuchsia-800 py-12 ">
-                <div className="container mx-auto">
+            <Header />
+
+            <div className="w-full min-h-screen text-white bg-gradient-to-b from-stone-900 to-fuchsia-800 py-12">
+                <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl lg:text-4xl font-bold">Fiyatlandırma</h2>
-                        <p className="text-md lg:text-lg mt-2 font-light">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Fiyatlandırma</h2>
+                        <p className="text-sm md:text-md lg:text-lg mt-2 font-light">
                             Sizin için en uygun planı seçin.
                         </p>
                     </div>
@@ -26,9 +25,8 @@ const Pricing = ()=>{
                                 "E-posta Uyarıları",
                                 "Zapier Entegrasyonu"
                             ]}
-                            shadowColor ="shadow-fuchsia-500"
-                            borderTColor ="border-t-fuchsia-500"
-
+                            shadowColor="shadow-fuchsia-500"
+                            borderTColor="border-t-fuchsia-500"
                         />
                         <PriceCards
                             title="Standart"
@@ -39,10 +37,8 @@ const Pricing = ()=>{
                                 "E-posta & SMS Uyarıları",
                                 "Zapier & API Entegrasyonu"
                             ]}
-                            shadowColor ="shadow-red-500"
-                            borderTColor ="border-t-red-500"
-
-
+                            shadowColor="shadow-red-500"
+                            borderTColor="border-t-red-500"
                         />
                         <PriceCards
                             title="Profesyonel"
@@ -53,16 +49,16 @@ const Pricing = ()=>{
                                 "24/7 Destek",
                                 "Gelişmiş Entegrasyonlar"
                             ]}
-                            shadowColor ="shadow-yellow-500"
-                            borderTColor ="border-t-yellow-500"
-
+                            shadowColor="shadow-yellow-500"
+                            borderTColor="border-t-yellow-500"
                         />
                     </div>
                 </div>
             </div>
-            <Footer/>
+
+            <Footer />
         </>
-    )
+    );
 };
-;
-export default Pricing
+
+export default Pricing;

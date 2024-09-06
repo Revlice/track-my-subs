@@ -3,7 +3,6 @@ import Home from './pages/Home.jsx';
 import Panel from './pages/Panel.jsx';
 import HowItWorks from "./pages/HowItWorks.jsx";
 import Pricing from "./pages/Pricing.jsx";
-import BlogPage from "./pages/BlogPage.jsx";
 import About from "./pages/About.jsx";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
             <Route path="/anasayfa" element={<Home/>}/>
             <Route path="/how-it-works" element={<HowItWorks/>}></Route>
             <Route path="/pricing" element={<Pricing/>}></Route>
-            <Route path="/blog" element={<BlogPage/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path="/admin" element={<Panel/>}></Route>
         </Routes>

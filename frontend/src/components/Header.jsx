@@ -1,41 +1,49 @@
 import logo from '../assets/logo.png';
-import {NavLink,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa'; // Hamburger ve kapatma ikonları
 
 const Header = () => {
     const navigate = useNavigate();
-
+    const [menuOpen, setMenuOpen] = useState(false); // Menü durumu için state
 
     const liste = [
         {
-            name:'Nasıl Çalışır?',
-            go:"/how-it-works"
+            name: 'Nasıl Çalışır?',
+            go: "/how-it-works"
         },
         {
-            name:'Fiyatlandırma',
-            go:"/pricing"
+            name: 'Fiyatlandırma',
+            go: "/pricing"
         },
         {
-            name:'Blog',
-            go:"/blog"
-        },
-        {
-            name:'Hakkında',
-            go:"/about"
+            name: 'Hakkında',
+            go: "/about"
         }];
 
     return (
         <div className="h-auto w-full bg-black/90 font-suse">
-            <div className="container mx-auto flex flex-wrap items-center justify-between p-4">
-                <img onClick={()=> navigate("/")} className="w-24 cursor-pointer" src={logo} alt="r_logo.png" />
-                <ul className="inline-flex space-x-4">
+            <div className="container mx-auto flex items-center justify-between p-4">
+                {/* Logo */}
+                <img onClick={() => navigate("/")} className="w-24 cursor-pointer" src={logo} alt="r_logo.png" />
+
+                {/* Hamburger Menüsü */}
+                <div className="sm:hidden">
+                    <button onClick={() => setMenuOpen(!menuOpen)}>
+                        {menuOpen ? <FaTimes className="text-white text-2xl" /> : <FaBars className="text-white text-2xl" />}
+                    </button>
+                </div>
+
+                {/* Menünün büyük ekranlarda görünmesi */}
+                <ul className="hidden sm:flex space-x-4">
                     {liste.map((item, index) => (
-                        <li  className="text-white px-1.5 hover:text-white/80 transition-colors" key={index}>
+                        <li className="text-white px-1.5 hover:text-white/80 transition-colors" key={index}>
                             <NavLink
                                 to={item.go}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "text-fuchsia-500 border-b w-full border-fuchsia-500 pb-1 px-1.5 transition-colors"  // Aktif link için stil
-                                        : "text-white px-1.5 hover:text-white/80 transition-colors" // Aktif olmayanlar için stil
+                                        ? "text-fuchsia-500 border-b border-fuchsia-500 pb-1 px-1.5 transition-colors"
+                                        : "text-white px-1.5 hover:text-white/80 transition-colors"
                                 }
                             >
                                 {item.name}
@@ -43,13 +51,42 @@ const Header = () => {
                         </li>
                     ))}
                 </ul>
-                <div className="flex space-x-2 mt-2 sm:mt-0">
+
+                {/* Butonlar */}
+                <div className="hidden sm:flex space-x-2">
                     <button className="text-lg mx-2 text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
                     <button className="text-lg border-2 border-fuchsia-500 mx-2 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
                 </div>
             </div>
+
+            {/* Mobil menü */}
+            {menuOpen && (
+                <div className="sm:hidden flex flex-col items-center bg-black/90">
+                    <ul className="flex flex-col space-y-4 mt-4">
+                        {liste.map((item, index) => (
+                            <li key={index}>
+                                <NavLink
+                                    to={item.go}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "text-fuchsia-500 border-b border-fuchsia-500 pb-1 transition-colors"
+                                            : "text-white pb-1 hover:text-white/80 transition-colors"
+                                    }
+                                    onClick={() => setMenuOpen(false)} // Link tıklandığında menüyü kapat
+                                >
+                                    {item.name}
+                                </NavLink>
+                            </li>
+                        ))}
+                        <div className="flex flex-col space-y-2 mt-4">
+                            <button className="text-lg text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
+                            <button className="text-lg border-2 border-fuchsia-500 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
+                        </div>
+                    </ul>
+                </div>
+            )}
         </div>
-    )
+    );
 };
 
 export default Header;

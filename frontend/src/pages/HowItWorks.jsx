@@ -2,23 +2,18 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import sosyalmedya from "../assets/sosyalmedya.png";
 
-
-
-const HowItWorks = ()=>{
-
-    return(
+const HowItWorks = () => {
+    return (
         <>
-            <Header/>
-            <div
-                className="w-full h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex flex-col items-center">
-                <div
-                    className="container mx-auto flex flex-col md:flex-row items-center justify-around h-auto p-4">
-                    <div className="flex flex-col mt-12 md:w-1/2 lg:w-1/3">
-                        <p className="text-3xl font-semibold mb-4 leading-loose">
+            <Header />
+
+            <div className="w-full min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex flex-col items-center py-12">
+                <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-center px-4">
+                    <div className="flex flex-col md:w-1/2 lg:w-1/2 lg:pr-8">
+                        <p className="text-2xl md:text-3xl font-semibold mb-4 leading-relaxed">
                             Abonelik Takip Uygulaması Nedir?
                         </p>
-                        <p className="text-lg font-medium leading-8">
-
+                        <p className="text-base md:text-lg font-medium leading-relaxed">
                             Abonelik Takip Uygulaması, kullanıcıların çeşitli hizmetlere ait aboneliklerini kolayca
                             yönetebilmelerini sağlayan bir platformdur. Uygulama, kullanıcının tüm aboneliklerini tek
                             bir yerde toplamasına olanak tanır ve bu sayede ödeme tarihlerini, abonelik sürelerini ve
@@ -31,22 +26,20 @@ const HowItWorks = ()=>{
                             sistem, gereksiz abonelikleri sonlandırma ve maliyetleri optimize etme konusunda da
                             kullanıcıya rehberlik eder.
                         </p>
-                        <button
-                            className="px-4 py-3 mt-4 bg-white text-black rounded-xl text-xl hover:bg-fuchsia-500 hover:text-white transition-colors">
+                        <button className="px-4 py-3 mt-4 bg-white text-black rounded-xl text-base md:text-xl hover:bg-fuchsia-500 hover:text-white transition-colors">
                             Hemen Başlayın
                         </button>
-
                     </div>
 
-                    <div className="mt-8 md:mt-0">
-                        <img className="w-96 scale-150" src={sosyalmedya} alt="logo"/>
+                    <div className="flex justify-center md:w-1/2">
+                        <img className="w-80 md:w-96 lg:w-[450px] mx-auto" src={sosyalmedya} alt="sosyalmedya" />
                     </div>
-
                 </div>
             </div>
-            <Footer/>
+
+            <Footer />
         </>
-    )
+    );
 };
 
 export default HowItWorks;
