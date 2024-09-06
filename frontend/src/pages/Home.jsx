@@ -14,6 +14,7 @@ const Home = ()=>{
                 <Section2/>
                 <Price/>
                 <Footer/>
+
         </>
     )
 };

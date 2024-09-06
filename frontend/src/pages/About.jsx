@@ -3,7 +3,10 @@ import Footer from "../components/Footer.jsx";
 import ekip from "../assets/ekip.png";
 import InformationCards from "../components/InformationCards.jsx";
 
+
+
 const About = () => {
+
     return (
         <>
             <Header />
