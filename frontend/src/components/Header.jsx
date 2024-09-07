@@ -54,8 +54,12 @@ const Header = () => {
 
                 {/* Butonlar */}
                 <div className="hidden sm:flex space-x-2">
-                    <button className="text-lg mx-2 text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
-                    <button className="text-lg border-2 border-fuchsia-500 mx-2 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
+                    <button
+                    onClick={()=> navigate("/login")}
+                        className="text-lg mx-2 text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
+                    <button
+                        onClick={()=> navigate("/signup")}
+                        className="text-lg border-2 border-fuchsia-500 mx-2 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
                 </div>
             </div>
 
@@ -79,8 +83,8 @@ const Header = () => {
                             </li>
                         ))}
                         <div className="flex flex-col space-y-2 mt-4">
-                            <button className="text-lg text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
-                            <button className="text-lg border-2 border-fuchsia-500 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
+                            <button onClick={() =>navigate("/login")} className="text-lg text-white px-4 py-1 border-0 rounded-lg transition-colors hover:text-white/80">Giriş</button>
+                            <button onClick={()=>navigate("/signup")} className="text-lg border-2 border-fuchsia-500 hover:text-black px-4 py-1 text-white rounded-lg transition-colors hover:bg-fuchsia-500">ŞİMDİ BAŞLA</button>
                         </div>
                     </ul>
                 </div>
