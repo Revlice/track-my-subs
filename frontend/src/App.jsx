@@ -4,6 +4,8 @@ import Panel from './pages/Panel.jsx';
 import HowItWorks from "./pages/HowItWorks.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import About from "./pages/About.jsx";
+import Login from "./form/Login.jsx";
+import SignUp from "./form/SignUp.jsx";
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
             <Route path="/pricing" element={<Pricing/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path="/admin" element={<Panel/>}></Route>
+            <Route path="/login" exact element={<Login/>}></Route>
+            <Route path="/signup" exact element={<SignUp/>}></Route>
         </Routes>
     </>
   )
