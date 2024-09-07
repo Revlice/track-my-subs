@@ -1,12 +1,15 @@
 import { useState } from 'react';
-
+import axios from 'axios';
+import {Link,useNavigate} from "react-router-dom";
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit =async (e) => {
         e.preventDefault();
         setError('');
 
@@ -23,12 +26,25 @@ const SignUp = () => {
         }
 
         // Form verilerini burada işleyin (örneğin, bir API'ye gönderin)
-        console.log('Email:', email, 'Password:', password);
+        try{
+            const response = await axios.post("http://localhost:3000/api/auth/signup",{
+                email,
+                password,
+                confirmPassword
+            })
+            console.log("User registered",response.data);
+
+        }catch(error){
+            console.error("Error during signup",error.response.data);
+
+        }
+
 
         // Form başarılı bir şekilde gönderildiğinde inputları temizle
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        navigate("/login")
     };
 
     return (
@@ -75,9 +91,16 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <button type="submit" className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-3 rounded-lg">
+                <button type="submit"
+                        className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-3 rounded-lg">
                     Kayıt Ol!
                 </button>
+                <p className="mt-4 text-center">
+                    Zaten kayıtlı mısınız ? {' '}
+                    <Link to="/login" className="text-fuchsia-400 hover:text-fuchsia-500 font-bold">
+                        Giriş Yapın
+                    </Link>
+                </p>
             </form>
         </div>
     );

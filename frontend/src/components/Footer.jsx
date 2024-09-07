@@ -8,7 +8,7 @@ const Footer = ()=>{
         name:"Instagram",
         icon:FaInstagram,
     },{
-        name:"Linkedln",
+        name:"Linkedin",
         icon:FaLinkedin,
     },{
         name:"GitHub",

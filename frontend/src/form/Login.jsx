@@ -1,20 +1,39 @@
-import { useState } from 'react';
+import { useState} from 'react';
+import {useNavigate,Link} from "react-router-dom";
+import axios from "axios";
+
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        // Burada, form verilerini bir API'ye gönderebilir veya başka bir işlem yapabilirsiniz.
-        console.log('Email:', email, 'Password:', password, 'Remember Me:', rememberMe);
+        try{
+            const response = await axios.post("http://localhost:3000/api/auth/login",{
+                email,
+                password,
+            });
+
+            const {token} = response.data;
+            localstorage.setItem('token',token);
+            console.log("User registered",response.data);
+
+        }catch(error){
+            console.error("Error during signup",error.response.data);
+
+        }
+        navigate("/panel")
     };
 
     return (
-        <div className="w-full min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
-            <form onSubmit={handleSubmit} className="bg-stone-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="w-full  min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
+            <form onSubmit={handleSubmit} className="bg-stone-800  p-6 rounded-lg shadow-lg max-w-sm w-full">
                 <h2 className="text-2xl font-bold mb-6">Giriş</h2>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -60,9 +79,9 @@ const Login = () => {
                 </button>
                 <p className="mt-4 text-center">
                     Kayıt olmadıysanız{' '}
-                    <a href="#" className="text-fuchsia-400 hover:text-fuchsia-500 font-bold">
+                    <Link to="/signup" className="text-fuchsia-400 hover:text-fuchsia-500 font-bold">
                         Kayıt Olun
-                    </a>
+                    </Link>
                 </p>
             </form>
         </div>
