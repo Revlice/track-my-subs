@@ -1,9 +1,19 @@
 import logo from '../assets/logo.png';
+import {FaInstagram, FaLinkedin,FaGithub} from "react-icons/fa";
 
 
 const Footer = ()=>{
     const liste = ['Nasıl Çalışır?', 'Fiyatlandırma', 'Blog', 'Hakkında'];
-    const liste2 = ['Instagram','linkedin','github'];
+    const liste2 = [{
+        name:"Instagram",
+        icon:FaInstagram,
+    },{
+        name:"Linkedln",
+        icon:FaLinkedin,
+    },{
+        name:"GitHub",
+        icon:FaGithub,
+    }];
     return(
         <div className="w-full h-auto bg-stone-900 text-white flex items-center flex-col">
             <div className="container mx-auto pt-12">
@@ -22,7 +32,7 @@ const Footer = ()=>{
                     <div>
                         <ul>
                             {liste2.map((item,index)=>(
-                                <li className="text-white px-1.5 hover:text-white/80 transition-colors cursor-pointer" key={index}>{item}</li>
+                                <li className="text-white  items-center  px-1.5 hover:text-white/80 transition-colors cursor-pointer" key={index}><item.icon/>{item.name}</li>
                             ))}
                         </ul>
 
