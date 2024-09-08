@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import {Link,useNavigate} from "react-router-dom";
+import toast,{Toaster} from 'react-hot-toast';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,23 +33,28 @@ const SignUp = () => {
                 password,
                 confirmPassword
             })
+
+            toast.success("Başarıyla kayıt olundu!");
             console.log("User registered",response.data);
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setTimeout(()=>{
+                navigate("/login")
+            },1500)
 
         }catch(error){
+            toast.error("Kullanıcı zaten bulunuyor");
             console.error("Error during signup",error.response.data);
 
         }
 
 
-        // Form başarılı bir şekilde gönderildiğinde inputları temizle
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-        navigate("/login")
-    };
 
+    };
     return (
         <div className="w-full min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
+            <Toaster position="top-center"/>
             <form onSubmit={handleSubmit} className="bg-stone-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
                 <h2 className="text-2xl font-bold mb-6">Kayıt Ol</h2>
                 {error && <p className="text-red-500 mb-4">{error}</p>}

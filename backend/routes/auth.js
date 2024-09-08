@@ -1,7 +1,8 @@
 const express = require('express');
 const User = require('../models/Users');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 const router = express.Router();
@@ -22,7 +23,7 @@ router.post("/signup",async (req,res)=>{
         const newUser = new User({email,password});
         await newUser.save();
 
-        const token = jwt.sign({userId:newUser._id},process.env.JWT_SCRET,{expiresIn:'1h'})
+        const token = jwt.sign({userId:newUser._id},process.env.JWT_SECRET,{expiresIn:'1h'})
         res.status(201).json({token});
 
     }catch(err){
@@ -43,11 +44,15 @@ router.post("/login",async (req,res)=>{
         }
 
         const isMatch = await bcrypt.compare(password,user.password);
+        console.log("Şifre eşleşmesi durumu:", isMatch);
+        console.log("Girilen şifre:", password);
+        console.log("Veritabanındaki hashlenmiş şifre:", user.password);
+
         if(!isMatch){
             return res.status(400).json({message:"Hatalı e-posta veya şifre"});
 
         }
-        const token = jwt.sign({userId:user._id},process.env.JWT_SCRET,{expiresIn: '1h'});
+        const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn: '1h'});
         res.json({token})
     }catch(err){
         res.status(500).json({message:"Giriş yapmada hata var"});
@@ -55,6 +60,7 @@ router.post("/login",async (req,res)=>{
 
 
 })
+
 
 module.exports = router;
 

@@ -12,6 +12,13 @@ app.use(express.json()); //json formatında görmek için
 app.use(cors());
 app.use("/api/auth",authRoutes) //Auth routelarını kullanmak için
 
+
+
+app.get("/",(req,res)=>{
+    res.send("backend api çalışıyor");
+});
+
+
 //Database bağlantısı gerçekleştirme
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser:true,

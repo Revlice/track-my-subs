@@ -1,6 +1,7 @@
 import { useState} from 'react';
 import {useNavigate,Link} from "react-router-dom";
 import axios from "axios";
+import toast,{Toaster} from 'react-hot-toast';
 
 
 
@@ -21,18 +22,22 @@ const Login = () => {
             });
 
             const {token} = response.data;
-            localstorage.setItem('token',token);
+            localStorage.setItem('token',token);
+            toast.success("Başarıyla giriş yapıldı");
             console.log("User registered",response.data);
+            navigate("/panel")
 
         }catch(error){
+            toast.error("Hatalı e-posta veya şifre!");
             console.error("Error during signup",error.response.data);
 
         }
-        navigate("/panel")
+
     };
 
     return (
         <div className="w-full  min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
+            <Toaster position="top-center"/>
             <form onSubmit={handleSubmit} className="bg-stone-800  p-6 rounded-lg shadow-lg max-w-sm w-full">
                 <h2 className="text-2xl font-bold mb-6">Giriş</h2>
                 <div className="mb-4">
