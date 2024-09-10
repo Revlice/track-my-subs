@@ -2,7 +2,8 @@ import { useState} from 'react';
 import {useNavigate,Link} from "react-router-dom";
 import axios from "axios";
 import toast,{Toaster} from 'react-hot-toast';
-
+import {useDispatch} from 'react-redux';
+import {handleLogin} from "../store/loginAuth.js";
 
 
 const Login = () => {
@@ -11,6 +12,9 @@ const Login = () => {
     const [rememberMe, setRememberMe] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
 
 
     const handleSubmit = async(e) => {
@@ -25,12 +29,12 @@ const Login = () => {
             localStorage.setItem('token',token);
             toast.success("Başarıyla giriş yapıldı");
             console.log("User registered",response.data);
-            navigate("/panel")
+            navigate("/panel");
+            dispatch(handleLogin(true))
 
         }catch(error){
             toast.error("Hatalı e-posta veya şifre!");
             console.error("Error during signup",error.response.data);
-
         }
 
     };

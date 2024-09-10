@@ -1,6 +1,7 @@
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import PriceCards from "../components/PriceCards.jsx";
+import {motion} from 'framer-motion';
 
 const Pricing = () => {
     return (
@@ -8,7 +9,11 @@ const Pricing = () => {
             <Header />
 
             <div className="w-full min-h-screen text-white bg-gradient-to-b from-stone-900 to-fuchsia-800 py-12">
-                <div className="container mx-auto px-4">
+                <motion.div
+                    initial={{translateX:-100}}
+                    animate={{translateX:0}}
+                    transition={{duration:0.2}}
+                    className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">Fiyatlandırma</h2>
                         <p className="text-sm md:text-md lg:text-lg mt-2 font-light">
@@ -53,7 +58,7 @@ const Pricing = () => {
                             borderTColor="border-t-yellow-500"
                         />
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             <Footer />

@@ -10,6 +10,8 @@ const SignUp = () => {
     const navigate = useNavigate();
 
 
+
+
     const handleSubmit =async (e) => {
         e.preventDefault();
         setError('');

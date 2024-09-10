@@ -1,8 +1,12 @@
 import logo from '../assets/logo.png';
-
+import {motion} from 'framer-motion';
 const Main = () => {
     return (
-        <div className="w-full h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex flex-col items-center">
+        <motion.div
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:1}}
+            className="w-full h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex flex-col items-center">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-around h-auto p-4">
                 <div className="flex flex-col mt-12 md:w-1/2 lg:w-1/3">
                     <p className="text-3xl font-semibold mb-4 leading-loose">
@@ -18,7 +22,7 @@ const Main = () => {
                     <img className="w-52 scale-150" src={logo} alt="logo" />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

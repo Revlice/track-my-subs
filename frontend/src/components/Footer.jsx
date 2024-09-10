@@ -30,9 +30,11 @@ const Footer = ()=>{
                         </ul>
                     </div>
                     <div>
-                        <ul>
+                        <ul className="inline-flex  flex-col justify-center">
                             {liste2.map((item,index)=>(
-                                <li className="text-white  items-center  px-1.5 hover:text-white/80 transition-colors cursor-pointer" key={index}><item.icon/>{item.name}</li>
+                                <li className="text-white inline-flex  items-center  px-1.5 hover:text-white/80 transition-colors cursor-pointer" key={index}>
+                                    <item.icon/>
+                                    <p className="pl-2 ">{item.name}</p></li>
                             ))}
                         </ul>
 

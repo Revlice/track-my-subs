@@ -10,8 +10,13 @@ const UserSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+    },
+    user_tier:{
+        type:Number,
+        required:true,
+        default:0,
     }
-});
+}, {timestamps:true});
 
 //Şifreyi kaydetmeden önce hashleyin
 UserSchema.pre('save', async function(next) {
@@ -21,4 +26,7 @@ UserSchema.pre('save', async function(next) {
     next();
 });
 
-module.exports = mongoose.model('User',UserSchema);
+
+
+const User = mongoose.model('User',UserSchema);
+module.exports = User;

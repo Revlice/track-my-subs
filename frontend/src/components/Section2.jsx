@@ -38,7 +38,7 @@ const Section2 = () => {
     ];
 
     return (
-        <div className="w-full h-auto text-white bg-gradient-to-b from-stone-900 to-fuchsia-800 py-12">
+        <div className="w-full h-auto text-white bg-gradient-to-b from-stone-900 to-fuchsia-800 py-12 ">
             <div className="container mx-auto">
                 <div className="text-center mb-8">
                     <h2 className="text-2xl lg:text-3xl font-bold">Özellikler</h2>
@@ -46,9 +46,9 @@ const Section2 = () => {
                         Aboneliklerinizi yönetmenizi sağlayan güçlü özellikler
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  ">
                     {liste.map((item, index) => (
-                        <div key={index} className="p-6 rounded-lg shadow-2xl  backdrop-brightness-75 transition-shadow">
+                        <div key={index} className="p-6 rounded-lg shadow-2xl hover:scale-95 transition-all  backdrop-brightness-75">
                             <div className={`flex justify-center items-center text-5xl mb-4 ${item.color}`}>
                                 <item.icon />
                             </div>

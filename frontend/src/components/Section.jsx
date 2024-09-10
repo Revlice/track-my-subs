@@ -1,6 +1,7 @@
 import { VscCheck } from "react-icons/vsc";
 import abonePicture from '../assets/abone4.png';
 
+
 const Section = () => {
     return (
         <div className="w-full min-h-screen text-white bg-gradient-to-t from-stone-900 to-fuchsia-800 py-8">
