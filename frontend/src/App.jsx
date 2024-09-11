@@ -8,6 +8,8 @@ import Pricing from "./pages/Pricing.jsx";
 import About from "./pages/About.jsx";
 import Login from "./form/Login.jsx";
 import SignUp from "./form/SignUp.jsx";
+import ForgotPassword from './formForget/ForgotPassword.jsx';
+import ResetPassword from './formForget/ResetPassword.jsx';
 import { handleLogin, checkSession } from './store/loginAuth';
 
 function App() {
@@ -32,8 +34,10 @@ function App() {
                 <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/login" exact element={<Login />} />
-                <Route path="/signup" exact element={<SignUp />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/panel" element={isLoggedIn ? <Panel /> : <Navigate to="/login" />} />
             </Routes>
         </>

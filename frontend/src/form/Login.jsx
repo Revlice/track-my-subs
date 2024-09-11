@@ -92,7 +92,7 @@ const Login = () => {
                         />
                         <label htmlFor="rememberMe" className="text-sm">Beni Hatırla</label>
                     </div>
-                    <a href="#" className="text-sm text-fuchsia-400 hover:text-fuchsia-500">Şifremi Unuttum?</a>
+                    <a href="/forgot-password" className="text-sm text-fuchsia-400 hover:text-fuchsia-500">Şifremi Unuttum?</a>
                 </div>
                 <button type="submit" className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-3 rounded-lg">
                     Giriş

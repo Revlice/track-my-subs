@@ -1,9 +1,23 @@
 import logo from '../assets/logo.png';
 import {FaInstagram, FaLinkedin,FaGithub} from "react-icons/fa";
+import {Link} from 'react-router-dom';
 
 
 const Footer = ()=>{
-    const liste = ['Nasıl Çalışır?', 'Fiyatlandırma', 'Blog', 'Hakkında'];
+    const liste = [
+        {
+            name:'Nasıl Çalışır?',
+            go: "/how-it-works"
+        },
+        {
+         name:'Fiyatlandırma',
+         go: "/pricing"
+        },
+        {
+            name:'Hakkında',
+            go:'/about'
+        }
+    ];
     const liste2 = [{
         name:"Instagram",
         icon:FaInstagram,
@@ -25,7 +39,12 @@ const Footer = ()=>{
                     <div>
                         <ul>
                             {liste.map((item,index)=>(
-                                <li className="text-white px-1.5 hover:text-white/80 transition-colors cursor-pointer" key={index}>{item}</li>
+                                    <li className="text-white px-1.5 hover:text-white/80 transition-colors cursor-pointer"
+                                        key={index}>
+                                        <Link to={item.go}>
+                                            {item.name}
+                                        </Link>
+                                    </li>
                             ))}
                         </ul>
                     </div>
