@@ -1,6 +1,5 @@
 import logo from '../../assets/logo.png';
 import { FaRegUserCircle } from "react-icons/fa";
-import { MdArrowDownward } from "react-icons/md";
 import { FaArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
@@ -35,7 +34,7 @@ const PanelHeader = () => {
                         </li>
                         <li className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
                             Raporlar
-                            <MdArrowDownward className="size-5" />
+
                         </li>
                         <li className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
                             Takvim

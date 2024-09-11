@@ -1,10 +1,9 @@
-import { useState} from 'react';
-import {useNavigate,Link} from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import toast,{Toaster} from 'react-hot-toast';
-import {useDispatch} from 'react-redux';
-import {handleLogin} from "../store/loginAuth.js";
-
+import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogin, checkSession } from "../store/loginAuth.js";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,36 +12,48 @@ const Login = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isLoggedIn = useSelector((state) => state.login.login);
 
-
-
-
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
-            const response = await axios.post("http://localhost:3000/api/auth/login",{
+        try {
+            const response = await axios.post("http://localhost:3000/api/auth/login", {
                 email,
                 password,
             });
 
-            const {token} = response.data;
-            localStorage.setItem('token',token);
+            const { token } = response.data;
+            const loginTime = new Date().getTime();
+
+            if (rememberMe) {
+                localStorage.setItem('token', token);
+                localStorage.setItem('loginTime', loginTime);
+            } else {
+                sessionStorage.setItem('token', token);
+                sessionStorage.setItem('loginTime', loginTime);
+            }
+
             toast.success("Başarıyla giriş yapıldı");
-            console.log("User registered",response.data);
+            dispatch(handleLogin({ login: true, loginTime }));
             navigate("/panel");
-            dispatch(handleLogin(true))
 
-        }catch(error){
+        } catch (error) {
             toast.error("Hatalı e-posta veya şifre!");
-            console.error("Error during signup",error.response.data);
+            console.error("Error during signup", error.response.data);
         }
-
     };
 
+    useEffect(() => {
+        dispatch(checkSession());
+        if (isLoggedIn) {
+            navigate("/panel");
+        }
+    }, [dispatch, isLoggedIn, navigate]);
+
     return (
-        <div className="w-full  min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
-            <Toaster position="top-center"/>
-            <form onSubmit={handleSubmit} className="bg-stone-800  p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <div className="w-full min-h-screen text-white font-suse bg-gradient-to-b from-stone-900 to-fuchsia-800 flex justify-center items-center">
+            <Toaster position="top-center" />
+            <form onSubmit={handleSubmit} className="bg-stone-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
                 <h2 className="text-2xl font-bold mb-6">Giriş</h2>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -98,3 +109,4 @@ const Login = () => {
 };
 
 export default Login;
+    
