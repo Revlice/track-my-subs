@@ -39,7 +39,13 @@ const Footer = ()=>{
                     <div>
                         <ul>
                             {liste.map((item,index)=>(
-                                    <li className="text-white px-1.5 hover:text-white/80 transition-colors cursor-pointer"
+                                    <li onClick={()=>{
+                                        window.scrollTo({
+                                            top:0,
+                                            behavior:"smooth"
+                                        })
+                                    }}
+                                        className="text-white px-1.5 hover:text-white/80 transition-colors cursor-pointer"
                                         key={index}>
                                         <Link to={item.go}>
                                             {item.name}
@@ -64,7 +70,7 @@ const Footer = ()=>{
                 <p className="font-extralight">Bu sitedeki materyal yalnızca genel bilgi amaçlı sağlanmıştır ve birincil, daha doğru, daha eksiksiz
                     veya daha güncel bilgi kaynaklarına danışılmadan karar almanın tek temeli olarak güvenilmemeli veya
                     kullanılmamalıdır. Bu sitedeki materyale güvenmek kendi riskinizdir.</p>
-                <p className="font-medium">coded by Revlice <span className="font-extrabold">@2024</span></p>
+                <p className="font-medium mt-2">coded by Revlice <span className="font-extrabold">@2024</span></p>
             </div>
         </div>
     )
