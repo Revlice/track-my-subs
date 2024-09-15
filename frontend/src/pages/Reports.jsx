@@ -1,9 +1,8 @@
 import { Bar } from 'react-chartjs-2';
 
 const Reports = () => {
-    // Örnek veri
     const data = {
-        labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran'],
+        labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
         datasets: [
             {
                 label: 'Aylık Abonelik Harcamaları ($)',
