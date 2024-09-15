@@ -11,7 +11,6 @@ const PanelHeader = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
     const handleDropdownToggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -19,6 +18,19 @@ const PanelHeader = () => {
     const handleLogoutClick = () => {
         dispatch(handleLogOut());
         navigate("/");
+    };
+
+    // Menü öğeleri için yönlendirme fonksiyonları
+    const goToSubscriptions = () => {
+        navigate("/subscriptions");
+    };
+
+    const goToReports = () => {
+        navigate("/reports");
+    };
+
+    const goToCalendar = () => {
+        navigate("/calendar");
     };
 
     return (
@@ -29,14 +41,19 @@ const PanelHeader = () => {
                 </div>
                 <div>
                     <ul className="inline-flex">
-                        <li className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
+                        <li
+                            onClick={goToSubscriptions}
+                            className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
                             Abonelikler
                         </li>
-                        <li className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
+                        <li
+                            onClick={goToReports}
+                            className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
                             Raporlar
-
                         </li>
-                        <li className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
+                        <li
+                            onClick={goToCalendar}
+                            className="cursor-pointer flex items-center transition-colors text-fuchsia-200 pr-12 hover:text-fuchsia-50">
                             Takvim
                         </li>
                     </ul>
@@ -69,4 +86,3 @@ const PanelHeader = () => {
 };
 
 export default PanelHeader;
-

@@ -1,8 +1,11 @@
 import { VscCheck } from "react-icons/vsc";
 import abonePicture from '../assets/abone4.png';
+import {useNavigate} from 'react-router-dom';
+
 
 
 const Section = () => {
+    const navigate = useNavigate();
     return (
         <div className="w-full min-h-screen text-white bg-gradient-to-t from-stone-900 to-fuchsia-800 py-8">
             <div className="container mx-auto px-4">
@@ -36,7 +39,7 @@ const Section = () => {
                             </li>
                         </ul>
                         <div className="flex flex-col items-center lg:items-start mt-8">
-                            <button className="px-4 py-2 rounded-lg bg-fuchsia-300 text-black hover:text-white hover:bg-fuchsia-500 transition-colors">
+                            <button onClick={()=>navigate("/panel")} className="px-4 py-2 rounded-lg bg-fuchsia-300 text-black hover:text-white hover:bg-fuchsia-500 transition-colors">
                                 Ücretsiz Başlayın
                             </button>
                             <p className="font-extralight text-sm opacity-50 mt-2">Kredi Kartı gerekmez</p>

@@ -12,6 +12,11 @@ import ForgotPassword from './formForget/ForgotPassword.jsx';
 import ResetPassword from './formForget/ResetPassword.jsx';
 import { handleLogin, checkSession } from './store/loginAuth';
 
+// Admin Panel Sayfaları
+import Subscriptions from './pages/Subscriptions.jsx';
+import Reports from './pages/Reports.jsx';
+import Calendar from './pages/Calendar.jsx';
+
 function App() {
     const isLoggedIn = useSelector((state) => state.login.login);
     const dispatch = useDispatch();
@@ -29,6 +34,7 @@ function App() {
     return (
         <>
             <Routes>
+                {/* Genel Sayfalar */}
                 <Route path="/" element={<Home />} />
                 <Route path="/anasayfa" element={<Home />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
@@ -38,7 +44,14 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
+
+                {/* Admin Panel */}
                 <Route path="/panel" element={isLoggedIn ? <Panel /> : <Navigate to="/login" />} />
+
+                {/* Admin Panel İç Sayfalar (Abonelikler, Raporlar, Takvim) */}
+                <Route path="/subscriptions" element={isLoggedIn ? <Subscriptions /> : <Navigate to="/login" />} />
+                <Route path="/reports" element={isLoggedIn ? <Reports /> : <Navigate to="/login" />} />
+                <Route path="/calendar" element={isLoggedIn ? <Calendar /> : <Navigate to="/login" />} />
             </Routes>
         </>
     );

@@ -1,6 +1,9 @@
 import logo from '../assets/logo.png';
 import {motion} from 'framer-motion';
+import {useNavigate} from 'react-router-dom';
+
 const Main = () => {
+    const navigate = useNavigate();
     return (
         <motion.div
             initial={{opacity:0}}
@@ -15,7 +18,7 @@ const Main = () => {
                     <p className="text-lg font-medium leading-8">
                         Abonelik izleyicimiz tüm aboneliklerinizi kontrol altına almanızı ve gereksiz ücretlerden kaçınmanızı sağlar. Bir sonraki ödemenizden önce kişiselleştirilmiş uyarılar almanızı sağlar.
                     </p>
-                    <button className="px-4 py-3 mt-4 bg-white text-black rounded-xl text-xl hover:bg-fuchsia-500 hover:text-white transition-colors">Aboneliklerinizi Ekleyin</button>
+                    <button onClick={()=>navigate('/panel')} className="px-4 py-3 mt-4 bg-white text-black rounded-xl text-xl hover:bg-fuchsia-500 hover:text-white transition-colors">Aboneliklerinizi Ekleyin</button>
                     <p className="font-light text-sm mt-8">10. Parça Abonelikleri ÜCRETSİZ, Yükseltme için sadece Kredi Kartınızı ekleyin</p>
                 </div>
                 <div className="mt-8 md:mt-0">
